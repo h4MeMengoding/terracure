@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #eef1eb;
+  --surface: #ffffff;
+  --ink: #17201c;
+  --muted: #5b665f;
+  --forest: #173f36;
+  --lime: #cde974;
+  --lime-soft: #eff7d7;
+  --line: #dce2dc;
+  --critical: #d63a31;
+  --critical-soft: #fff0ee;
+  --warning: #b86516;
+  --warning-soft: #fff3df;
+}
+
+* { box-sizing: border-box; }
+html { background: #dfe2dc; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: #dfe2dc;
+  font-family: var(--font-inter), Inter, "Segoe UI", Helvetica, Arial, sans-serif;
+  letter-spacing: 0;
+  text-rendering: geometricPrecision;
+}
+button, select, input, a { font: inherit; }
+button, select, input { min-height: 44px; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible {
+  outline: 3px solid #8cab32;
+  outline-offset: 3px;
+}
+button:active, a:active { transform: translateY(1px); }
+.app-frame {
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 460px;
+  overflow-x: clip;
+  background: var(--canvas);
+}
+.page-content { padding: 18px 16px calc(112px + env(safe-area-inset-bottom)); }
+.safe-bottom { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
+.surface-card { border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+.section-label { color: var(--muted); font-size: 12px; font-weight: 700; }
+.metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.hmi-scroll { scrollbar-width: thin; scrollbar-color: #96a19a #eef1eb; }
+.hmi-scroll::-webkit-scrollbar { height: 10px; }
+.hmi-scroll::-webkit-scrollbar-track { background: #eef1eb; border-radius: 999px; }
+.hmi-scroll::-webkit-scrollbar-thumb { background: #96a19a; border-radius: 999px; }
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+@media (min-width: 640px) {
+  .app-frame {
+    margin-block: 24px;
+    min-height: calc(100dvh - 48px);
+    border: 1px solid #cbd2ca;
+    border-radius: 20px;
+    box-shadow: 0 24px 60px rgb(23 32 28 / 12%);
+  }
+}
+@media (max-width: 350px) {
+  .page-content { padding-inline: 12px; }
+  .metric-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
