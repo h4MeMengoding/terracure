@@ -6,12 +6,11 @@ import { X } from "lucide-react";
 type ParameterHelpSheetProps = {
   open: boolean;
   label: string;
-  range: string;
   description: string;
   onClose: () => void;
 };
 
-export function ParameterHelpSheet({ open, label, range, description, onClose }: ParameterHelpSheetProps) {
+export function ParameterHelpSheet({ open, label, description, onClose }: ParameterHelpSheetProps) {
   useEffect(() => {
     if (!open) return;
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -36,10 +35,6 @@ export function ParameterHelpSheet({ open, label, range, description, onClose }:
           </button>
         </div>
         <p className="mt-4 text-sm leading-6 text-[#4E5A53]">{description}</p>
-        <div className="mt-4 border-t border-[#E3E8E3] pt-3">
-          <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#6C766F]">Rentang sensor</p>
-          <p className="mt-1 text-sm font-bold text-[#173F36]">{range}</p>
-        </div>
       </section>
     </div>
   );

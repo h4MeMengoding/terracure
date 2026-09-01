@@ -26,8 +26,8 @@ export function AppShell({ title, children }: { title: string; children: React.R
               <RiceMark className="h-7 w-7" />
             </div>
             <div className="min-w-0">
-              <p className="text-[11px] font-bold text-[#637069]">TERRACURE</p>
-              <h1 className="truncate text-[19px] font-bold leading-tight">{title}</h1>
+              <p className="text-[11px] font-extrabold tracking-[0.08em] text-[#637069]">TERRACURE</p>
+              <h1 className="truncate text-[24px] font-extrabold leading-none tracking-[-0.02em]">{title}</h1>
             </div>
           </div>
           <button type="button" aria-label="Lihat status notifikasi" aria-expanded={showNotice} onClick={() => setShowNotice((value) => !value)} className="relative grid h-11 w-11 place-items-center rounded-full border border-[#CFD7CF] bg-white text-[#173F36] transition-colors hover:bg-[#EFF7D7]">

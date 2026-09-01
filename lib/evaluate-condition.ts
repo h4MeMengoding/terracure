@@ -38,12 +38,12 @@ export function evaluateCondition(data: SensorData): Evaluation {
 
   if (ec > 2000) {
     return {
-      priority: "Electrical Conductivity (EC)",
+      priority: "Intensitas Kimia",
       status: "Toksisitas Tinggi",
       severity: "critical",
-      trigger: "EC > 2000 µS/cm",
+      trigger: "Intensitas kimia > 2000 µS/cm",
       recommendation: "Hentikan pupuk kimia! Lakukan pembilasan lahan.",
-      detail: "Nilai EC tinggi menunjukkan akumulasi garam atau residu pupuk kimia."
+      detail: "Intensitas kimia yang tinggi menunjukkan akumulasi garam atau residu pupuk kimia."
     };
   }
 

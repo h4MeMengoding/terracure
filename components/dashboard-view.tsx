@@ -40,7 +40,7 @@ export function DashboardView() {
     }
 
     dashboardSplashShown = true;
-    const timer = window.setTimeout(() => setShowSplash(false), 2000);
+    const timer = window.setTimeout(() => setShowSplash(false), 3000);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -57,21 +57,20 @@ export function DashboardView() {
   }));
 
   const fieldCards = cards.filter((card) => ["Suhu Tanah", "Kelembapan", "pH Tanah", "Tinggi Air"].includes(card.label));
-  const nutrientCards = cards.filter((card) => ["EC", "Nitrogen", "Fosfor", "Kalium"].includes(card.label));
+  const nutrientCards = cards.filter((card) => ["Intensitas Kimia", "Nitrogen", "Fosfor", "Kalium"].includes(card.label));
 
   return (
     <AppShell title="Dashboard">
       <div className="dashboard-stack">
         <section className="dashboard-intro">
           <div>
-            <p className="eyebrow">PEMANTAUAN LAHAN</p>
-            <h2 className="mt-1 text-[26px] font-bold leading-tight text-[#17201C]">Kondisi sawah hari ini</h2>
+            <p className="eyebrow">RINGKASAN LAHAN</p>
+            <h2 className="mt-1 text-[28px] font-extrabold leading-[1.05] tracking-[-0.025em] text-[#17201C]">Kondisi sawah hari ini</h2>
           </div>
-          <HstCard hst={data.hst} />
         </section>
         <DeclarationPanel evaluation={evaluation} onOpenRecommendation={() => setShowRecommendation(true)} />
-        <SensorSection title="Kondisi Lahan" cards={fieldCards} />
-        <SensorSection title="Ketersediaan Hara" cards={nutrientCards} />
+        <HstCard hst={data.hst} />
+        <SensorSection title="Kondisi Lahan" cards={[...fieldCards, ...nutrientCards]} />
       </div>
       <RecommendationSheet open={showRecommendation} evaluation={evaluation} data={data} onClose={() => setShowRecommendation(false)} />
     </AppShell>
@@ -84,9 +83,9 @@ function SensorSection({ title, cards }: { title: string; cards: DashboardCard[]
       <div className="mb-3 flex items-end justify-between gap-3">
         <div>
           <p className="eyebrow">PEMBACAAN SENSOR</p>
-          <h2 className="mt-1 text-[18px] font-bold text-[#17201C]">{title}</h2>
+          <h2 className="mt-1 text-[20px] font-extrabold leading-tight tracking-[-0.015em] text-[#17201C]">{title}</h2>
         </div>
-        <span className="text-xs font-bold text-[#5B665F]">{cards.length} parameter</span>
+        <span className="shrink-0 text-xs font-bold text-[#5B665F]">{cards.length} parameter</span>
       </div>
       <div className="metric-grid grid gap-3">
         {cards.map((card) => <ParameterCard key={card.label} {...card} />)}

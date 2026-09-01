@@ -88,7 +88,7 @@ function getRecommendationSteps(status: string) {
     return [
       {
         title: "Hentikan semua pupuk kimia sementara",
-        body: "EC sudah di atas 2000 µS/cm. Penambahan pupuk dapat menaikkan toksisitas dan merusak tanaman."
+        body: "Intensitas kimia sudah di atas 2000 µS/cm. Penambahan pupuk dapat menaikkan toksisitas dan merusak tanaman."
       },
       {
         title: "Lakukan pembilasan lahan",
@@ -100,7 +100,7 @@ function getRecommendationSteps(status: string) {
       },
       {
         title: "Tunda pemupukan lanjut",
-        body: "Evaluasi ulang setelah EC turun di bawah 2000 µS/cm dan pH berada di atas 5.5."
+        body: "Evaluasi ulang setelah intensitas kimia turun di bawah 2000 µS/cm dan pH berada di atas 5.5."
       }
     ];
   }

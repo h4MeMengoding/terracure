@@ -5,10 +5,10 @@ export function HstCard({ hst }: { hst: number }) {
 
   return (
     <section className="hst-card overflow-hidden rounded-[14px] bg-[#173F36] p-4 text-white">
-      <div className="flex items-center justify-between gap-3">
+      <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-bold text-[#DCE7E2]">MUSIM TANAM AKTIF</p>
-          <p className="mt-1 text-sm font-semibold text-white">{getGrowthPhase(hst)}</p>
+          <p className="text-[11px] font-extrabold tracking-[0.06em] text-[#DCE7E2]">MUSIM TANAM AKTIF</p>
+          <p className="mt-1 text-[15px] font-bold text-white">{getGrowthPhase(hst)}</p>
         </div>
         <div className="text-right">
           <p className="text-3xl font-bold text-[#CDE974]">{hst}</p>

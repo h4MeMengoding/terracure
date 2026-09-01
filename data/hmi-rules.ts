@@ -23,15 +23,15 @@ export const hmiRules: HmiRuleGroup[] = [
     tone: "ph",
     rows: [
       { parameter: "pH < 5.5", declaration: "pH Asam", recommendation: "Tunda pemupukan! Taburkan kapur dolomit." },
-      { parameter: "pH >= 5.5", declaration: "pH Normal", recommendation: "Lanjut cek EC." }
+      { parameter: "pH >= 5.5", declaration: "pH Normal", recommendation: "Lanjut cek Intensitas Kimia." }
     ]
   },
   {
-    priority: "Electrical Conductivity (EC) (Residu/Toksisitas lahan)",
+    priority: "Intensitas Kimia (Residu/Toksisitas lahan)",
     tone: "ec",
     rows: [
-      { parameter: "EC > 2000 µS/cm", declaration: "Toksisitas Tinggi", recommendation: "Hentikan pupuk kimia! Bilas lahan." },
-      { parameter: "EC <= 2000 µS/cm", declaration: "Residu Aman", recommendation: "Lanjut evaluasi nutrisi berdasar waktu." }
+      { parameter: "Intensitas Kimia > 2000 µS/cm", declaration: "Toksisitas Tinggi", recommendation: "Hentikan pupuk kimia! Bilas lahan." },
+      { parameter: "Intensitas Kimia <= 2000 µS/cm", declaration: "Residu Aman", recommendation: "Lanjut evaluasi nutrisi berdasar waktu." }
     ]
   },
   {

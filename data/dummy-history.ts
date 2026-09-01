@@ -27,7 +27,7 @@ export const historyData: HistoryEntry[] = ecValues.map((ec, index) => {
 });
 
 export const chartOptions = [
-  { key: "ec", label: "EC (µS/cm)", unit: "µS/cm" },
+  { key: "ec", label: "Intensitas Kimia (µS/cm)", unit: "µS/cm" },
   { key: "ph", label: "pH Tanah", unit: "pH" },
   { key: "nitrogen", label: "Nitrogen (N)", unit: "mg/kg" },
   { key: "phosphorus", label: "Fosfor (P)", unit: "mg/kg" },

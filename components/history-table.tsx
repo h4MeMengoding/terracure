@@ -27,7 +27,7 @@ export function HistoryTable({ entries }: { entries: HistoryEntry[] }) {
             </div>
             <dl className="mt-3 grid grid-cols-5 gap-2 text-center">
               {[
-                ["EC", entry.ec],
+                ["Intensitas Kimia", entry.ec],
                 ["pH", entry.ph],
                 ["N", entry.nitrogen],
                 ["P", entry.phosphorus],

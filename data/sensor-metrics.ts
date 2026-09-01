@@ -30,13 +30,13 @@ export const sensorMetrics: SensorMetric[] = [
     description: "Memantau kadar air tanah dan membantu menentukan kebutuhan pengairan."
   },
   {
-    label: "EC",
+    label: "Intensitas Kimia",
     unit: "µS/cm",
-    note: () => "Residu pupuk",
+    note: () => "Kepekatan residu kimia",
     value: (data) => data.ec,
     severity: (data) => (data.ec > 2000 ? "critical" : "normal"),
     range: "0 sampai 10000 µS/cm",
-    description: "Mendeteksi kepekatan ion dan residu pupuk untuk mengenali potensi toksisitas lahan."
+    description: "Menunjukkan tingkat kepekatan zat kimia dan residu pupuk di lahan untuk membantu mengenali potensi toksisitas."
   },
   {
     label: "pH Tanah",
