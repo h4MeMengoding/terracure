@@ -70,7 +70,7 @@ export function InstallAppButton() {
   );
 }
 
-function InstallGuide({ isIOS, onClose }: { isIOS: boolean; onClose: () => void }) {
+export function InstallGuide({ isIOS, onClose }: { isIOS: boolean; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#17201C]/45 px-3 pb-3" role="presentation" onMouseDown={onClose}>
       <section role="dialog" aria-modal="true" aria-labelledby="install-guide-title" className="w-full max-w-[428px] rounded-[20px] bg-white p-5 shadow-[0_18px_50px_rgb(23_32_28/28%)]" onMouseDown={(event) => event.stopPropagation()}>
