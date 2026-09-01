@@ -10,7 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "TERRACURE",
+  title: {
+    default: "TERRACURE",
+    template: "%s | TERRACURE"
+  },
   description: "Smart HMI Sawah untuk monitoring kondisi tanah dan rekomendasi agronomi.",
   manifest: "/manifest.json",
   appleWebApp: {

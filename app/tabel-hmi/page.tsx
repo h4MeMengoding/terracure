@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { AppShell } from "@/components/app-shell";
 import { HmiTable } from "@/components/hmi-table";
+
+export const metadata: Metadata = { title: "Tabel" };
 
 export default function TabelHmiPage() {
   return (
