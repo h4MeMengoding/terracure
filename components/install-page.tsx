@@ -14,6 +14,7 @@ type BeforeInstallPromptEvent = Event & {
 export function InstallPage() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
 
@@ -21,6 +22,7 @@ export function InstallPage() {
     const standalone = window.matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
     setIsInstalled(standalone);
     setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent) && !standalone);
+    setIsAndroid(/android/i.test(navigator.userAgent));
 
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
@@ -79,7 +81,7 @@ export function InstallPage() {
           <p className="px-2 text-center text-xs leading-5 text-[#5F6963]">Gunakan Safari di iPhone atau browser yang mendukung PWA untuk memasang aplikasi.</p>
         </div>
       </section>
-      {showGuide ? <InstallGuide isIOS={isIOS} onClose={() => setShowGuide(false)} /> : null}
+      {showGuide ? <InstallGuide isIOS={isIOS} isAndroid={isAndroid} onClose={() => setShowGuide(false)} /> : null}
     </main>
   );
 }

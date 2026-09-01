@@ -11,6 +11,7 @@ type BeforeInstallPromptEvent = Event & {
 export function InstallAppButton() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [isIOS, setIsIOS] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
 
@@ -18,6 +19,7 @@ export function InstallAppButton() {
     const standalone = window.matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
     setIsInstalled(standalone);
     setIsIOS(/iphone|ipad|ipod/i.test(navigator.userAgent) && !standalone);
+    setIsAndroid(/android/i.test(navigator.userAgent));
 
     const handleBeforeInstallPrompt = (event: Event) => {
       event.preventDefault();
@@ -65,12 +67,12 @@ export function InstallAppButton() {
           </div>
         </div>
       </section>
-      {showGuide ? <InstallGuide isIOS={isIOS} onClose={() => setShowGuide(false)} /> : null}
+      {showGuide ? <InstallGuide isIOS={isIOS} isAndroid={isAndroid} onClose={() => setShowGuide(false)} /> : null}
     </>
   );
 }
 
-export function InstallGuide({ isIOS, onClose }: { isIOS: boolean; onClose: () => void }) {
+export function InstallGuide({ isIOS, isAndroid = false, onClose }: { isIOS: boolean; isAndroid?: boolean; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end justify-center bg-[#17201C]/45 px-3 pb-3" role="presentation" onMouseDown={onClose}>
       <section role="dialog" aria-modal="true" aria-labelledby="install-guide-title" className="w-full max-w-[428px] rounded-[20px] bg-white p-5 shadow-[0_18px_50px_rgb(23_32_28/28%)]" onMouseDown={(event) => event.stopPropagation()}>
@@ -89,7 +91,7 @@ export function InstallGuide({ isIOS, onClose }: { isIOS: boolean; onClose: () =
         ) : (
           <ol className="mt-4 space-y-3 text-sm leading-6 text-[#4E5A53]">
             <li className="flex gap-3"><MoreVertical className="mt-1 shrink-0 text-[#477064]" size={18} /><span>Buka menu browser di kanan atas.</span></li>
-            <li className="flex gap-3"><Download className="mt-1 shrink-0 text-[#477064]" size={18} /><span>Pilih Install app atau Add to Home screen.</span></li>
+            <li className="flex gap-3"><Download className="mt-1 shrink-0 text-[#477064]" size={18} /><span>{isAndroid ? "Pilih Install app untuk memasang TERRACURE." : "Pilih Install app atau Add to Home screen."}</span></li>
           </ol>
         )}
       </section>
