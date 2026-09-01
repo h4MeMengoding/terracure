@@ -1,6 +1,7 @@
 "use client";
 
 import type { Evaluation } from "@/types/terracure";
+import { CircleAlert, CircleCheck, ArrowUpRight } from "lucide-react";
 import { severityClasses } from "@/components/status";
 
 type DeclarationPanelProps = {
@@ -10,14 +11,15 @@ type DeclarationPanelProps = {
 
 export function DeclarationPanel({ evaluation, onOpenRecommendation }: DeclarationPanelProps) {
   const tone = severityClasses(evaluation.severity);
+  const StatusIcon = evaluation.severity === "normal" ? CircleCheck : CircleAlert;
 
   return (
-    <section className={`rounded-lg border ${tone.border} ${tone.bg} p-4`}>
+    <section className={`declaration-panel rounded-[14px] border ${tone.border} ${tone.bg} p-4`}>
       <div className="flex items-center justify-between gap-3">
-        <p className={`text-xs font-bold ${tone.text}`}>STATUS LAHAN</p>
-        <span className={`rounded-full bg-white/70 px-2.5 py-1 text-[10px] font-bold ${tone.text}`}>{evaluation.priority}</span>
+        <div className={`flex items-center gap-2 text-xs font-bold ${tone.text}`}><StatusIcon aria-hidden="true" size={18} strokeWidth={2} /><span>STATUS LAHAN</span></div>
+        <span title={evaluation.priority} className={`max-w-[58%] truncate border-b-2 pb-1 text-right text-[10px] font-bold ${tone.text}`}>{evaluation.priority}</span>
       </div>
-      <h2 className="mt-3 text-[26px] font-bold leading-tight text-[#17201C]">{evaluation.status}</h2>
+      <h2 className="mt-4 text-[30px] font-bold leading-none text-[#17201C]">{evaluation.status}</h2>
       <p className="mt-2 text-sm font-semibold text-[#414C46]">{evaluation.trigger}</p>
       <div className="mt-4 border-t border-black/10 pt-3">
         <p className="text-xs font-bold text-[#5B665F]">TINDAKAN UTAMA</p>
@@ -26,9 +28,9 @@ export function DeclarationPanel({ evaluation, onOpenRecommendation }: Declarati
       <button
         type="button"
         onClick={onOpenRecommendation}
-        className={`mt-4 w-full rounded-lg px-4 py-3 text-sm font-bold transition-opacity hover:opacity-90 ${tone.solid}`}
+        className={`mt-4 flex w-full items-center justify-between border px-4 py-3 text-sm font-bold transition-colors hover:bg-white/70 ${tone.border} text-[#17201C]`}
       >
-        Buka Panduan Tindakan
+        <span>Buka Panduan Tindakan</span><ArrowUpRight aria-hidden="true" size={18} strokeWidth={2.2} />
       </button>
     </section>
   );

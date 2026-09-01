@@ -12,8 +12,19 @@ import { HstCard } from "@/components/hst-card";
 import { ParameterCard } from "@/components/parameter-card";
 import { RecommendationSheet } from "@/components/recommendation-sheet";
 import { SplashScreen } from "@/components/splash-screen";
+import type { Severity } from "@/types/terracure";
 
 let dashboardSplashShown = false;
+
+type DashboardCard = {
+  label: string;
+  value: string;
+  unit: string;
+  note: string;
+  severity: Severity;
+  range: string;
+  description: string;
+};
 
 export function DashboardView() {
   const { mounted, sensorData } = useTerracureSimulation();
@@ -40,30 +51,46 @@ export function DashboardView() {
     value: formatNumber(metric.value(data)),
     unit: metric.unit,
     note: metric.note(data),
-    severity: metric.severity(data)
+    severity: metric.severity(data),
+    range: metric.range,
+    description: metric.description
   }));
+
+  const fieldCards = cards.filter((card) => ["Suhu Tanah", "Kelembapan", "pH Tanah", "Tinggi Air"].includes(card.label));
+  const nutrientCards = cards.filter((card) => ["EC", "Nitrogen", "Fosfor", "Kalium"].includes(card.label));
 
   return (
     <AppShell title="Dashboard">
-      <div className="space-y-5">
-        <HstCard hst={data.hst} />
-        <DeclarationPanel evaluation={evaluation} onOpenRecommendation={() => setShowRecommendation(true)} />
-        <section>
-          <div className="mb-3 flex items-end justify-between gap-3">
-            <div>
-              <h2 className="text-base font-bold text-[#17201C]">Sensor Lahan</h2>
-              <p className="mt-1 text-xs text-[#5F6963]">Nilai simulasi untuk demonstrasi HMI</p>
-            </div>
-            <span className="text-xs font-bold text-[#5B665F]">8 sensor</span>
+      <div className="dashboard-stack">
+        <section className="dashboard-intro">
+          <div>
+            <p className="eyebrow">PEMANTAUAN LAHAN</p>
+            <h2 className="mt-1 text-[26px] font-bold leading-tight text-[#17201C]">Kondisi sawah hari ini</h2>
           </div>
-          <div className="metric-grid grid gap-3">
-            {cards.map((card) => (
-              <ParameterCard key={card.label} {...card} />
-            ))}
-          </div>
+          <HstCard hst={data.hst} />
         </section>
+        <DeclarationPanel evaluation={evaluation} onOpenRecommendation={() => setShowRecommendation(true)} />
+        <SensorSection title="Kondisi Lahan" cards={fieldCards} />
+        <SensorSection title="Ketersediaan Hara" cards={nutrientCards} />
       </div>
       <RecommendationSheet open={showRecommendation} evaluation={evaluation} data={data} onClose={() => setShowRecommendation(false)} />
     </AppShell>
+  );
+}
+
+function SensorSection({ title, cards }: { title: string; cards: DashboardCard[] }) {
+  return (
+    <section>
+      <div className="mb-3 flex items-end justify-between gap-3">
+        <div>
+          <p className="eyebrow">PEMBACAAN SENSOR</p>
+          <h2 className="mt-1 text-[18px] font-bold text-[#17201C]">{title}</h2>
+        </div>
+        <span className="text-xs font-bold text-[#5B665F]">{cards.length} parameter</span>
+      </div>
+      <div className="metric-grid grid gap-3">
+        {cards.map((card) => <ParameterCard key={card.label} {...card} />)}
+      </div>
+    </section>
   );
 }

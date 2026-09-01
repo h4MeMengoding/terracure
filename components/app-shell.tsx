@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, ChartNoAxesColumnIncreasing, CircleHelp, LayoutDashboard, ListTree, Settings2 } from "lucide-react";
+import { Bell, ChartNoAxesColumnIncreasing, LayoutDashboard, ListTree, Settings2 } from "lucide-react";
 import { useState } from "react";
 import { RiceMark } from "@/components/icons";
 
@@ -10,7 +10,6 @@ const menu = [
   { href: "/", label: "Home", icon: LayoutDashboard },
   { href: "/tabel-hmi", label: "Tabel", icon: ListTree },
   { href: "/riwayat", label: "Riwayat", icon: ChartNoAxesColumnIncreasing },
-  { href: "/info", label: "Info", icon: CircleHelp },
   { href: "/pengaturan", label: "Setelan", icon: Settings2 }
 ];
 
@@ -33,7 +32,6 @@ export function AppShell({ title, children }: { title: string; children: React.R
           </div>
           <button type="button" aria-label="Lihat status notifikasi" aria-expanded={showNotice} onClick={() => setShowNotice((value) => !value)} className="relative grid h-11 w-11 place-items-center rounded-full border border-[#CFD7CF] bg-white text-[#173F36] transition-colors hover:bg-[#EFF7D7]">
             <Bell aria-hidden="true" size={19} strokeWidth={2.2} />
-            <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full border-2 border-white bg-[#D63A31]" />
           </button>
         </header>
         {showNotice ? <div role="status" className="mx-4 mt-3 rounded-lg border border-[#D7DEC0] bg-[#EFF7D7] px-4 py-3 text-sm font-medium text-[#28483F]">Peringatan aktif ditampilkan langsung pada ringkasan kondisi lahan.</div> : null}
