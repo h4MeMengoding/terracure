@@ -22,7 +22,7 @@ export const historyData: HistoryEntry[] = ecValues.map((ec, index) => {
     nitrogen: Math.max(35, 65 - index),
     phosphorus: Math.max(24, 40 - Math.floor(index * 0.45)),
     potassium: Math.max(62, 80 - Math.floor(index * 0.4)),
-    waterLevel: index < 12 ? 3 : 2
+    waterLevel: index < 12 ? 30 : 20
   };
 });
 

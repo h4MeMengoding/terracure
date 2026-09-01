@@ -12,7 +12,7 @@ export const scenarios: Scenario[] = [
       nitrogen: 65,
       phosphorus: 40,
       potassium: 80,
-      waterLevel: 3,
+      waterLevel: 30,
       hst: 34
     }
   },
@@ -42,7 +42,7 @@ export const scenarios: Scenario[] = [
       nitrogen: 20,
       phosphorus: 20,
       potassium: 55,
-      waterLevel: 2,
+      waterLevel: 20,
       hst: 20
     }
   },
@@ -57,7 +57,7 @@ export const scenarios: Scenario[] = [
       nitrogen: 20,
       phosphorus: 30,
       potassium: 70,
-      waterLevel: 2,
+      waterLevel: 20,
       hst: 25
     }
   },
@@ -72,7 +72,7 @@ export const scenarios: Scenario[] = [
       nitrogen: 40,
       phosphorus: 30,
       potassium: 35,
-      waterLevel: 2,
+      waterLevel: 20,
       hst: 45
     }
   }

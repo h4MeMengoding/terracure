@@ -23,7 +23,7 @@ export const sensorMetrics: SensorMetric[] = [
   {
     label: "Kelembapan",
     unit: "%",
-    note: (data) => `${data.waterLevel} cm tinggi air`,
+    note: (data) => `${data.waterLevel} mm tinggi air`,
     value: (data) => data.moisture,
     severity: (data) => (data.moisture < 40 || data.waterLevel === 0 ? "critical" : "normal"),
     range: "0 sampai 100%",
@@ -76,11 +76,11 @@ export const sensorMetrics: SensorMetric[] = [
   },
   {
     label: "Tinggi Air",
-    unit: "cm",
-    note: () => "Muka air sawah",
+    unit: "mm",
+    note: () => "Permukaan air",
     value: (data) => data.waterLevel,
     severity: (data) => (data.waterLevel === 0 ? "critical" : "normal"),
-    range: "0 sampai 30 cm",
+    range: "0 sampai 300 mm",
     description: "Memantau tinggi muka air sawah untuk membantu evaluasi kebutuhan pengairan."
   }
 ];

@@ -19,7 +19,7 @@ export function evaluateCondition(data: SensorData): Evaluation {
       priority: "Hidrologi",
       status: "Tanah Kering",
       severity: "critical",
-      trigger: "Tinggi air = 0 cm",
+      trigger: "Tinggi air = 0 mm",
       recommendation: "Lakukan pengairan.",
       detail: "Kelembapan masih terbaca, tetapi tidak ada genangan air di permukaan."
     };

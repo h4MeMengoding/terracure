@@ -14,8 +14,8 @@ export const hmiRules: HmiRuleGroup[] = [
     tone: "hydrology",
     rows: [
       { parameter: "Kelembapan < 40%", declaration: "Tanah Kering", recommendation: "Lakukan pengairan." },
-      { parameter: "Kelembapan >= 40% AND Tinggi Air = 0 cm", declaration: "Tanah Kering", recommendation: "Lakukan pengairan." },
-      { parameter: "Kelembapan >= 40% AND Tinggi Air > 0 cm", declaration: "Hidrologi Normal", recommendation: "Lanjut cek pH tanah." }
+      { parameter: "Kelembapan >= 40% AND Tinggi Air = 0 mm", declaration: "Tanah Kering", recommendation: "Lakukan pengairan." },
+      { parameter: "Kelembapan >= 40% AND Tinggi Air > 0 mm", declaration: "Hidrologi Normal", recommendation: "Lanjut cek pH tanah." }
     ]
   },
   {

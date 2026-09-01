@@ -11,8 +11,9 @@ export function HstCard({ hst }: { hst: number }) {
           <p className="mt-1 text-[15px] font-bold text-white">{getGrowthPhase(hst)}</p>
         </div>
         <div className="text-right">
-          <p className="text-3xl font-bold text-[#CDE974]">{hst}</p>
-          <p className="text-xs font-semibold text-[#DCE7E2]">dari {TOTAL_HST} HST</p>
+          <p className="whitespace-nowrap text-3xl font-bold text-[#CDE974]">
+            {hst}<span className="ml-1 text-base font-semibold text-[#DCE7E2]">/{TOTAL_HST} HST</span>
+          </p>
         </div>
       </div>
       <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/15" aria-label={`Progres musim tanam ${progress}%`}>
