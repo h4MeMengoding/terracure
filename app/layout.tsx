@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { AppEntry } from "@/components/app-entry";
 import "./globals.css";
 
 const inter = Inter({
@@ -28,7 +29,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="id" className={inter.variable}>
-      <body>{children}</body>
+      <body><AppEntry>{children}</AppEntry></body>
     </html>
   );
 }

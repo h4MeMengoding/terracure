@@ -12,7 +12,7 @@ export function HistoryTable({ entries }: { entries: HistoryEntry[] }) {
   return (
     <section>
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h2 className="text-base font-bold text-[#17201C]">Catatan Sensor</h2>
+        <h2 className="text-base font-bold text-[#17201C]">Riwayat</h2>
         <span className="text-xs font-semibold text-[#5F6963]">Terbaru di atas</span>
       </div>
       <div className="space-y-2.5">
@@ -23,7 +23,7 @@ export function HistoryTable({ entries }: { entries: HistoryEntry[] }) {
                 <p className="text-sm font-bold text-[#17201C]">{entry.date}</p>
                 <p className="mt-0.5 text-xs text-[#5F6963]">{entry.time} WIB</p>
               </div>
-              <span className="rounded-full bg-[#EFF7D7] px-2.5 py-1 text-xs font-bold text-[#23483E]">HST {entry.hst}</span>
+              <span className="rounded-full bg-[#EFF7D7] px-2.5 py-1 text-xs font-bold text-[#23483E]">{entry.hst} HST</span>
             </div>
             <dl className="mt-3 grid grid-cols-5 gap-2 text-center">
               {[

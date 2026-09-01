@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bell, BellRing, Send } from "lucide-react";
+import { Bell, Send } from "lucide-react";
 import {
   getActiveNotificationSubscription,
   getNotificationSupport,
@@ -82,7 +82,7 @@ export function NotificationSettings() {
     <section className="surface-card p-4">
       <div className="flex items-start gap-3">
         <div className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-[#EEF1EB] text-[#173F36]">
-          {enabled ? <BellRing aria-hidden="true" size={20} strokeWidth={2} /> : <Bell aria-hidden="true" size={20} strokeWidth={2} />}
+          <Bell aria-hidden="true" size={20} strokeWidth={2} />
         </div>
         <div className="min-w-0 flex-1">
           <div className="flex items-start justify-between gap-3">
@@ -91,10 +91,17 @@ export function NotificationSettings() {
               <p className="mt-1 text-xs leading-5 text-[#5F6963]">{statusText}</p>
             </div>
           </div>
-          <div className="mt-4 flex items-center justify-between border-t border-[#E3E8E3] pt-3">
+          <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#E3E8E3] pt-3">
             <span className={`text-xs font-bold ${enabled ? "text-[#23483E]" : "text-[#5F6963]"}`}>{enabled ? "Aktif" : "Nonaktif"}</span>
-            <button type="button" role="switch" aria-checked={enabled} aria-label="Aktifkan notifikasi" disabled={!support.supported || busy} onClick={handleToggle} className={`relative h-8 w-[58px] shrink-0 rounded-full border-2 transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${enabled ? "border-[#173F36] bg-[#173F36]" : "border-[#AAB6AE] bg-[#F3F6F2]"}`}>
-              <span className={`absolute top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-white shadow-[0_1px_3px_rgb(23_32_28/25%)] transition-transform ${enabled ? "translate-x-[30px]" : "translate-x-1"}`} />
+            <button
+              type="button"
+              onClick={() => void handleToggle()}
+              aria-pressed={enabled}
+              aria-label={enabled ? "Matikan notifikasi" : "Aktifkan notifikasi"}
+              disabled={!support.supported || busy}
+              className="!min-h-9 rounded-md border border-[#173F36] px-3 text-xs font-bold text-[#173F36] transition-colors hover:bg-[#EFF7D7] disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              {enabled ? "Matikan" : "Aktifkan"}
             </button>
           </div>
           <button type="button" disabled={!enabled || busy} onClick={handleTest} className="mt-4 flex min-h-11 w-full items-center justify-between border border-[#CBD4CC] px-3 text-sm font-bold text-[#23483E] transition-colors hover:bg-[#EFF7D7] disabled:cursor-not-allowed disabled:opacity-45">

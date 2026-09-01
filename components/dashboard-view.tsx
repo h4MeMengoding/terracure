@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { defaultScenario } from "@/data/scenarios";
 import { sensorMetrics } from "@/data/sensor-metrics";
 import { evaluateCondition } from "@/lib/evaluate-condition";
@@ -11,10 +11,7 @@ import { DeclarationPanel } from "@/components/declaration-panel";
 import { HstCard } from "@/components/hst-card";
 import { ParameterCard } from "@/components/parameter-card";
 import { RecommendationSheet } from "@/components/recommendation-sheet";
-import { SplashScreen } from "@/components/splash-screen";
 import type { Severity } from "@/types/terracure";
-
-let dashboardSplashShown = false;
 
 type DashboardCard = {
   label: string;
@@ -28,23 +25,9 @@ type DashboardCard = {
 
 export function DashboardView() {
   const { mounted, sensorData } = useTerracureSimulation();
-  const [showSplash, setShowSplash] = useState(() => !dashboardSplashShown);
   const [showRecommendation, setShowRecommendation] = useState(false);
   const data = mounted ? sensorData : defaultScenario.data;
   const evaluation = evaluateCondition(data);
-
-  useEffect(() => {
-    if (dashboardSplashShown) {
-      setShowSplash(false);
-      return;
-    }
-
-    dashboardSplashShown = true;
-    const timer = window.setTimeout(() => setShowSplash(false), 3000);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  if (showSplash) return <SplashScreen />;
 
   const cards = sensorMetrics.map((metric) => ({
     label: metric.label,

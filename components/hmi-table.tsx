@@ -12,9 +12,6 @@ const priorityTone = {
 export function HmiTable() {
   return (
     <div className="surface-card overflow-hidden">
-      <div className="bg-[#1F6F5B] px-4 py-3 text-white">
-        <h2 className="text-center text-[17px] font-extrabold leading-tight">Tabel Human Machine Interface (HMI)</h2>
-      </div>
       <div className="hmi-scroll overflow-x-auto">
         <table className="min-w-[680px] border-collapse text-left text-[13px] leading-5 text-[#151A17]">
           <caption className="sr-only">Aturan keputusan HMI Terracure berdasarkan prioritas, parameter terbaca, deklarasi kondisi, dan rekomendasi taktis.</caption>

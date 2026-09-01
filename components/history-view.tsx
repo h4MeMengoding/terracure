@@ -17,11 +17,12 @@ type ChartKey = (typeof chartOptions)[number]["key"];
 export function HistoryView() {
   const [filter, setFilter] = useState<Filter>("7");
   const [chartKey, setChartKey] = useState<ChartKey>("ec");
-  const entries = useMemo(() => {
-    if (filter === "7") return historyData.slice(0, 7);
+  const chartEntries = useMemo(() => {
+    if (filter === "7") return historyData.slice(-7);
     if (filter === "30") return historyData;
     return historyData;
   }, [filter]);
+  const tableEntries = [...chartEntries].reverse();
   const selectedOption = chartOptions.find((option) => option.key === chartKey) ?? chartOptions[0];
 
   return (
@@ -64,8 +65,8 @@ export function HistoryView() {
             ))}
           </select>
         </section>
-        <TrendChart entries={entries} chartKey={chartKey} unit={selectedOption.unit} label={selectedOption.label} />
-        <HistoryTable entries={entries} />
+        <TrendChart entries={chartEntries} chartKey={chartKey} unit={selectedOption.unit} label={selectedOption.label} />
+        <HistoryTable entries={tableEntries} />
       </div>
     </AppShell>
   );
