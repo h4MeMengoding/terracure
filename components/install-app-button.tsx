@@ -41,7 +41,7 @@ export function InstallAppButton() {
   async function handleInstall() {
     if (isInstalled) return;
     if (!deferredPrompt) {
-      setShowGuide(true);
+      if (!isAndroid) setShowGuide(true);
       return;
     }
 

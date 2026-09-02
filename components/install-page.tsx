@@ -44,7 +44,7 @@ export function InstallPage() {
   async function handleInstall() {
     if (isInstalled) return;
     if (!deferredPrompt) {
-      setShowGuide(true);
+      if (!isAndroid) setShowGuide(true);
       return;
     }
     await deferredPrompt.prompt();

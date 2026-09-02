@@ -4,7 +4,12 @@
   "description": "Smart HMI Sawah untuk monitoring kondisi tanah dan rekomendasi agronomi.",
   "start_url": "/",
   "id": "/",
+  "scope": "/",
   "display": "standalone",
+  "display_override": ["standalone"],
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
   "background_color": "#F7FAF8",
   "theme_color": "#1F6F5B",
   "orientation": "portrait",
