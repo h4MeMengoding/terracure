@@ -11,5 +11,11 @@ export function AppEntry({ children }: { children: React.ReactNode }) {
     return () => window.clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      void navigator.serviceWorker.register("/sw.js", { scope: "/" });
+    }
+  }, []);
+
   return loading ? <SplashScreen /> : children;
 }
