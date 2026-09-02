@@ -17,5 +17,10 @@ export function AppEntry({ children }: { children: React.ReactNode }) {
     }
   }, []);
 
-  return loading ? <SplashScreen /> : children;
+  return (
+    <>
+      {children}
+      {loading ? <div className="fixed inset-0 z-[60]"><SplashScreen /></div> : null}
+    </>
+  );
 }
